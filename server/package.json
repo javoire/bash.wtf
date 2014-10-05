@@ -1,0 +1,11 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "description": "",
+  "main": "app.js",
+  "author": "Jonatan Dahl <dahl.jonatan@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "socket.io": "^1.1.0"
+  }
+}

@@ -1,0 +1,65 @@
+body {
+  color: #aaa;
+}
+
+body, input, pre, code {
+  font-family: monaco;
+}
+
+#shell, input {
+  font-size: 13px;
+  background-color: #002833;
+}
+
+.prompt-line {
+  position: relative;
+  &, input {
+    color: #eee;
+  }
+}
+
+.prompt-value {
+  margin-left: 16px;
+}
+
+.prompt, .prompt-value {
+  line-height: 27px;
+}
+
+input {
+  box-sizing: border-box;
+  border: none;
+  color: #eee;
+  width: 100%;
+  outline: none;
+  line-height: 18px;
+}
+
+#input {
+  color: #eee;
+}
+
+.prompt {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 100;
+}
+
+#shell {
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: scroll;
+}
+
+#shell-inner {
+  padding: 5px 10px;
+}
+
+pre {
+  margin: 0;
+}
