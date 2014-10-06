@@ -1,5 +1,6 @@
 var socket = io.connect('http://localhost:8080')
 var promptValue = '';
+var responseText = '';
 
 $(function() {
   var responseTemplate = Handlebars.compile($("#response-template").html());
@@ -10,22 +11,26 @@ $(function() {
   });
 
   socket.on('message', function(msg) {
-    var responseHtml = responseTemplate({ response: msg });
-    var promptHtml = promptTemplate({ promptValue: promptValue })
-    $('#shell-content').html([
-      $('#shell-content').html(),
-      promptHtml,
-      responseHtml,
-    ].join(''));
-    $('#shell').scrollTop($('#shell-inner').outerHeight() - window.innerHeight);
-  })
+    // concat
+    responseText += msg;
+    // until we reach the end of this message
+    if (responseText.match(/\n$/)) {
+      var responseHtml = responseTemplate({ response: responseText });
+      $('#shell-content').append(responseHtml);
+      // keep the viewport scrolled down
+      $('#shell').scrollTop($('#shell-inner').outerHeight() - window.innerHeight);
+      responseText = '';
+    };
+  });
 
   $('#input input').focus();
 
   $('#input').submit(function(e) {
     e.preventDefault();
-    promptValue = $('#input input').val();
+    var promptValue = $('#input input').val();
     socket.send(promptValue);
+    var promptHtml = promptTemplate({ promptValue: promptValue })
+    $('#shell-content').append(promptHtml);
     $('#input input').val('');
   });
 
