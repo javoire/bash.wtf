@@ -8,12 +8,23 @@
     <link href="all.css" media="screen" rel="stylesheet" type="text/css" />
   </head>
   <body role="document">
-    <script id="entry-template" type="text/x-handlebars-template">
+    <!-- templates -->
+    <script id="response-template" type="text/x-handlebars-template">
       <pre><code>{{response}}</code></pre>
     </script>
+    <script id="prompt-template" type="text/x-handlebars-template">
+      <div class="prompt-line">
+        <div class="prompt">$</div>
+        <div class="prompt-value">
+          {{promptValue}}
+        </div>
+      </div>
+    </script>
+
+    <!-- app -->
     <div id="shell">
       <div id="shell-inner">
-        <div id="response"></div>
+        <div id="shell-content"></div>
         <div class="prompt-line">
           <div class="prompt">$</div>
           <div class="prompt-value">
